@@ -8,7 +8,7 @@ dotenv.config();
 const app = express();
 app.set("view engine", "ejs");
 
-const PORT = 3004;
+const PORT = 3500;
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
