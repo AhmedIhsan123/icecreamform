@@ -1,51 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Panel</title>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Admin Panel</title>
 
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-    <script src="//cdn.datatables.net/2.3.4/js/dataTables.min.js"></script>
+		<!-- Scripts -->
+		<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+		<script src="//cdn.datatables.net/2.3.4/js/dataTables.min.js"></script>
 
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="/styles/admin.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.datatables.net/2.3.4/css/dataTables.dataTables.css"
-    />
+		<!-- Stylesheet -->
+		<link rel="stylesheet" href="/styles/admin.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.datatables.net/2.3.4/css/dataTables.dataTables.css"
+		/>
 
-    <!-- Favicon -->
-    <link rel="icon" href="images/icecream.png" />
-  </head>
-  <body>
-    <table id="admin-table" class="display">
-      <thead>
-        <tr>
-          <th>Time</th>
-          <th>Customer</th>
-          <th>Email</th>
-          <th>Flavor</th>
-          <th>Cone</th>
-          <th>Toppings</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% orders.forEach(order => { %>
-        <tr>
-          <td><%= order.time.toLocaleString() %></td>
-          <td><%= order.fname %> <%= order.lname %></td>
-          <td><%= order.email %></td>
-          <td><%= order.flavor %></td>
-          <td><%= order.cone %></td>
-          <td><%= order.toppings %></td>
-        </tr>
-        <% });%>
-      </tbody>
-    </table>
-  </body>
-  <script defer>
-    let table = new DataTable("#admin-table");
-  </script>
+		<!-- Favicon -->
+		<link rel="icon" href="/images/icecream.png" />
+	</head>
+	<body>
+		<table id="admin-table" class="display">
+			<thead>
+				<tr>
+					<th>Time</th>
+					<th>Customer</th>
+					<th>Email</th>
+					<th>Flavor</th>
+					<th>Cone</th>
+					<th>Toppings</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% orders.forEach(order => { %>
+				<tr>
+					<td><%= new Date(order.timestamp).toLocaleString() %></td>
+					<td><%= order.customer %></td>
+					<td><%= order.email %></td>
+					<td><%= order.flavor %></td>
+					<td><%= order.cone %></td>
+					<td><%= order.toppings %></td>
+				</tr>
+				<% }) %>
+			</tbody>
+		</table>
+
+		<script defer>
+			const table = new DataTable("#admin-table");
+		</script>
+	</body>
 </html>

@@ -1,86 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles/styles.css" />
+		<!-- Stylesheet -->
+		<link rel="stylesheet" href="styles/styles.css" />
 
-    <!-- Favicon -->
-    <link rel="icon" href="images/icecream.png" />
+		<!-- Favicon -->
+		<link rel="icon" href="images/icecream.png" />
 
-    <script src="js/ice-cream.js" defer></script>
+		<script src="js/ice-cream.js" defer></script>
 
-    <title>Ice Cream Order</title>
-  </head>
-  <body>
-    <img
-      src="images/icecreambr.png"
-      alt="picture of ice cream"
-      style="float: right"
-    />
-    <img
-      src="images/icecreamcup.png"
-      alt="picture of ice cream"
-      style="float: left"
-    />
-    <main>
-      <h1>Ice Cream Order Form</h1>
-      <form id="icecream-form" action="submit-order" method="post">
-        <fieldset>
-          <legend>Personal Information</legend>
-          <label for="fname">Name:</label>
-          <span id="err-fname" class="error">Please input a name.</span>
-          <input type="text" name="fname" id="fname" /><br />
-          <label for="email">Email:</label>
-          <span id="err-email" class="error">Please input a valid email.</span>
-          <input type="email" name="email" id="email" />
-        </fieldset>
-        <fieldset>
-          <legend>Order Details</legend>
-          <label for="flavor">Choose your flavor:</label>
-          <select name="flavor" id="flavor">
-            <option value="none">Select a flavor</option>
-            <option value="vanilla">Vanilla</option>
-            <option value="chocolate">Chocolate</option>
-            <option value="strawberry">Strawberry</option>
-            <option value="cookies">Cookies and Cream</option>
-          </select>
-          <span id="err-flavor" class="error">Please select a flavor.</span>
+		<title>Ice Cream Order</title>
+	</head>
+	<body>
+		<img
+			src="images/icecreambr.png"
+			alt="picture of ice cream"
+			style="float: right"
+		/>
+		<img
+			src="images/icecreamcup.png"
+			alt="picture of ice cream"
+			style="float: left"
+		/>
+		<main>
+			<h1>Ice Cream Order Form</h1>
 
-          <br /><br />
+			<!-- Form now posts directly to /confirm -->
+			<form id="icecream-form" action="/confirm" method="post">
+				<fieldset>
+					<legend>Personal Information</legend>
 
-          <label>Choose your cone:</label><br />
-          <input type="radio" id="wafflecone" name="cone" value="wafflecone" />
-          <label for="wafflecone">Waffle Cone</label>
-          <input type="radio" id="sugarcone" name="cone" value="sugarcone" />
-          <label for="sugarcone">Sugar Cone</label>
-          <input type="radio" id="cup" name="cone" value="cup" />
-          <label for="cup">Cup</label><br /><br />
-          <span id="err-cone" class="error">Please select a Cone.</span>
+					<label for="customer">Name:</label>
+					<span id="err-customer" class="error">Please input a name.</span>
+					<input type="text" name="customer" id="customer" required /><br />
 
-          <label for="toppings">Toppings:</label><br />
-          <input
-            type="checkbox"
-            id="sprinkles"
-            name="toppings[]"
-            value="sprinkles"
-          />
-          <label for="sprinkles">Sprinkles</label>
-          <input type="checkbox" id="nuts" name="toppings[]" value="nuts" />
-          <label for="nuts">Nuts</label>
-          <input type="checkbox" id="cherry" name="toppings[]" value="cherry" />
-          <label for="cherry">Cherry</label>
-          <input type="checkbox" id="cream" name="toppings[]" value="cream" />
-          <label for="cream">Whipped Cream</label>
-          <br /><br />
-          <label for="comment">Additional Comments:</label> <br />
-          <textarea name="comment" id="comment" rows="4" cols="50"></textarea>
-        </fieldset>
-        <button type="submit">Submit Order</button>
-      </form>
-      <p><a class="admin_link" href="/admin">Go to Admin page</a></p>
-    </main>
-  </body>
+					<label for="email">Email:</label>
+					<span id="err-email" class="error">Please input a valid email.</span>
+					<input type="email" name="email" id="email" required />
+				</fieldset>
+
+				<fieldset>
+					<legend>Order Details</legend>
+
+					<label for="flavor">Choose your flavor:</label>
+					<select name="flavor" id="flavor" required>
+						<option value="">Select a flavor</option>
+						<option value="vanilla">Vanilla</option>
+						<option value="chocolate">Chocolate</option>
+						<option value="strawberry">Strawberry</option>
+						<option value="cookies">Cookies and Cream</option>
+					</select>
+					<span id="err-flavor" class="error">Please select a flavor.</span>
+
+					<br /><br />
+
+					<label>Choose your cone:</label><br />
+					<input
+						type="radio"
+						id="wafflecone"
+						name="cone"
+						value="wafflecone"
+						required
+					/>
+					<label for="wafflecone">Waffle Cone</label>
+					<input type="radio" id="sugarcone" name="cone" value="sugarcone" />
+					<label for="sugarcone">Sugar Cone</label>
+					<input type="radio" id="cup" name="cone" value="cup" />
+					<label for="cup">Cup</label><br /><br />
+
+					<span id="err-cone" class="error">Please select a Cone.</span>
+
+					<label for="toppings">Toppings:</label><br />
+					<input
+						type="checkbox"
+						id="sprinkles"
+						name="toppings"
+						value="sprinkles"
+					/>
+					<label for="sprinkles">Sprinkles</label>
+					<input type="checkbox" id="nuts" name="toppings" value="nuts" />
+					<label for="nuts">Nuts</label>
+					<input type="checkbox" id="cherry" name="toppings" value="cherry" />
+					<label for="cherry">Cherry</label>
+					<input type="checkbox" id="cream" name="toppings" value="cream" />
+					<label for="cream">Whipped Cream</label>
+
+					<br /><br />
+
+					<label for="comment">Additional Comments:</label> <br />
+					<textarea name="comment" id="comment" rows="4" cols="50"></textarea>
+				</fieldset>
+
+				<button type="submit">Submit Order</button>
+			</form>
+
+			<p><a class="admin_link" href="/admin">Go to Admin page</a></p>
+		</main>
+	</body>
 </html>
